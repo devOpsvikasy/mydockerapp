@@ -11,7 +11,9 @@ pipeline{
          }        
         stage('Docker image build'){
               steps {
-                    sh 'docker build -t firstsapp .'
+                    sh '''docker build -t firstsapp .
+                        rm -rf *
+                    '''
               }
          }
     }
