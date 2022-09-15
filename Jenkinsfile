@@ -6,7 +6,7 @@ pipeline{
     stages{
        stage('GetCode'){
             steps{
-                sh 'git clone https://github.com/Sharath8000/mydockerapp.git'
+                git 'https://github.com/devOpsvikasy/mydockerapp.git'
             }
          }        
         stage('Docker Build & Push'){
@@ -17,7 +17,7 @@ pipeline{
                     docker build -t firstsapp . 
                     
                     echo " ********** Login to Nexus DTR ************* "
-                    docker login -u admin -p admin@123 http://34.228.78.173:9001/repository/dockerdtr/
+                    docker login -u admin -p admin@123 http://34.228.78.173:8081/repository/dockerdtr/
                     
                     echo " ********** Tagging the image ************"
                     docker tag firstapp 34.228.78.173:9001/repository/dockerdtr/sharath-vikas-dtr/vikas-sharath:myapp.1.1                  
